@@ -1,0 +1,296 @@
+<div class="navbar bg-base-100 shadow-sm fixed top-0 z-50">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">Mail Organizer</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="#faq" class="btn btn-ghost">FAQ</a></li>
+      <li><button class="btn btn-ghost btn-disabled">Blog</button></li>
+      <li>
+        <button class="btn btn-ghost btn-disabled">Release notes</button>
+      </li>
+      <li><a href="#pricing" class="btn btn-ghost">Pricing</a></li>
+      <li>
+        <button class="btn btn-info" (click)="startWithGoogle()">
+          Get started with Google
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="hero min-h-[70vh] bg-base-200 pt-16">
+  <div class="hero-content text-center">
+    <div class="max-w-3xl">
+      <h1 class="text-5xl font-bold leading-tight">
+        Keep Your Gmail Inbox Clean and Organized
+      </h1>
+      <p class="py-6 text-lg text-base-content/80">
+        AI-powered email organization that helps you maintain inbox zero
+        effortlessly.
+      </p>
+      <button class="btn btn-secondary btn-lg" (click)="startWithGoogle()">
+        Start Organizing Now
+      </button>
+    </div>
+  </div>
+</div>
+<div class="py-16 px-4 bg-base-100">
+  <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+  <div class="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
+    <div class="card bg-base-200 shadow-xl flex-1">
+      <div class="card-body items-center text-center">
+        <span class="material-symbols-outlined"> all_inbox </span>
+        <h3 class="card-title">We Read Your Inbox</h3>
+        <p>
+          Securely connect your Gmail account and let us analyze your email
+          patterns
+        </p>
+      </div>
+    </div>
+
+    <div class="card bg-base-200 shadow-xl flex-1">
+      <div class="card-body items-center text-center">
+        <span class="material-symbols-outlined">smart_toy</span>
+        <h3 class="card-title">AI Categorizes</h3>
+        <p>
+          Our AI agent intelligently assigns the most relevant labels to your
+          emails
+        </p>
+      </div>
+    </div>
+
+    <div class="card bg-base-200 shadow-xl flex-1">
+      <div class="card-body items-center text-center">
+        <span class="material-symbols-outlined">filter_alt</span>
+        <h3 class="card-title">Easy Filtering</h3>
+        <p>
+          Navigate your inbox effortlessly with smart, automated categorization
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-16 px-4 bg-base-200">
+  <h2 class="text-3xl font-bold text-center mb-12">What You Get</h2>
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+  >
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <span class="material-symbols-outlined">label</span>
+        <h3 class="card-title">Custom Label Control</h3>
+        <p>Create and customize your own labels to match your workflow</p>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <span class="material-symbols-outlined">bolt</span>
+        <h3 class="card-title">Real-Time Organization</h3>
+        <p>Every new email is automatically labeled as it arrives</p>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <span class="material-symbols-outlined">sync</span>
+        <h3 class="card-title">Seamless Gmail Sync</h3>
+        <p>Works directly with your Gmail without any manual setup</p>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <span class="material-symbols-outlined">search</span>
+        <h3 class="card-title">Insights Dashboard</h3>
+        <p>Track your inbox efficiency and email organization stats</p>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <span class="material-symbols-outlined">privacy_tip</span>
+        <h3 class="card-title">Enhanced Privacy</h3>
+        <p>Zero email storage - we only process, never store your data</p>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <span class="material-symbols-outlined">support_agent</span>
+        <h3 class="card-title">Expert Support</h3>
+        <p>Our team is here to help you 24/7 via chat or email</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="faq" class="py-16 px-4 bg-base-100 scroll-mt-16">
+  <h2 class="text-3xl font-bold text-center mb-12">
+    Frequently Asked Questions
+  </h2>
+  <div class="max-w-3xl mx-auto space-y-4">
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="faq-accordion" checked="checked" />
+      <div class="collapse-title text-xl font-medium">
+        How does the AI labeling work?
+      </div>
+      <div class="collapse-content">
+        <p>
+          Our AI analyzes the content, sender, and metadata in your emails to
+          automatically suggest and apply relevant labels.
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="faq-accordion" />
+      <div class="collapse-title text-xl font-medium">
+        Is my email data secure?
+      </div>
+      <div class="collapse-content">
+        <p>
+          Yes! We only process your emails to apply labels and never store any
+          email content. We use OAuth2 for secure Gmail access and follow strict
+          privacy guidelines.
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="faq-accordion" />
+      <div class="collapse-title text-xl font-medium">
+        Can I use my existing Gmail labels?
+      </div>
+      <div class="collapse-content">
+        <p>
+          Absolutely! We seamlessly integrate with your existing Gmail labels
+          and you can choose to enhance them with our AI-powered suggestions.
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="faq-accordion" />
+      <div class="collapse-title text-xl font-medium">
+        What if I want to cancel?
+      </div>
+      <div class="collapse-content">
+        <p>
+          You can cancel anytime. Your Gmail labels will remain intact, and
+          we'll immediately stop processing your new emails.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="pricing" class="py-16 px-4 bg-base-100 scroll-mt-16">
+  <h2 class="text-3xl font-bold text-center mb-12">
+    Simple, Transparent Pricing
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Free Trial -->
+    <div class="card bg-base-200 shadow-xl">
+      <div class="card-body items-center text-center">
+        <h3 class="card-title text-2xl font-bold">Free Trial</h3>
+        <div class="text-3xl font-bold my-4">$0</div>
+        <p class="font-semibold mb-4">Try for 30 days</p>
+        <ul class="space-y-2 text-left mb-8 min-h-[160px]">
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Up to 100 emails/day
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Basic AI labeling
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Email support
+          </li>
+        </ul>
+        <button class="btn btn-outline btn-disabled w-full">Start Trial</button>
+      </div>
+    </div>
+
+    <!-- Small -->
+    <div class="card bg-primary text-primary-content shadow-xl">
+      <div class="card-body items-center text-center">
+        <h3 class="card-title text-2xl font-bold">Small</h3>
+        <div class="text-3xl font-bold my-4">
+          $9<span class="text-lg">/mo</span>
+        </div>
+        <p class="font-semibold mb-4">Perfect for personal use</p>
+        <ul class="space-y-2 text-left mb-8 min-h-[160px]">
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Unlimited emails
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Advanced AI labeling
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Priority support
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Custom rules
+          </li>
+        </ul>
+        <button class="btn btn-secondary btn-disabled w-full">
+          Choose Small
+        </button>
+      </div>
+    </div>
+
+    <!-- Big -->
+    <div class="card bg-base-200 shadow-xl">
+      <div class="card-body items-center text-center">
+        <h3 class="card-title text-2xl font-bold">Big</h3>
+        <div class="text-3xl font-bold my-4">
+          $19<span class="text-lg">/mo</span>
+        </div>
+        <p class="font-semibold mb-4">For power users</p>
+        <ul class="space-y-2 text-left mb-8 min-h-[160px]">
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Everything in Small
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Multiple accounts
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >24/7 priority support
+          </li>
+        </ul>
+        <button class="btn btn-outline btn-disabled w-full">Choose Big</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hero bg-base-200 py-16">
+  <div class="hero-content text-center">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-bold mb-4">Ready to Organize Your Inbox?</h2>
+      <p class="mb-8 text-base-content/70">
+        Start managing your Gmail effortlessly with AI
+      </p>
+      <button class="btn btn-primary btn-lg" (click)="startWithGoogle()">
+        Get Started with Google
+      </button>
+    </div>
+  </div>
+</div>
