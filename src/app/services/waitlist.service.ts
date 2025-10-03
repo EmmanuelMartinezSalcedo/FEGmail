@@ -15,7 +15,8 @@ interface JoinWaitlistRequest {
   providedIn: 'root',
 })
 export class WaitService {
-  private readonly API_URL = 'https://localhost:3000';
+  private readonly API_URL =
+    'https://gmailorganizerweb20251003064031-ghapafesajdqa7gy.canadacentral-01.azurewebsites.net';
 
   constructor(private http: HttpClient) {}
 
