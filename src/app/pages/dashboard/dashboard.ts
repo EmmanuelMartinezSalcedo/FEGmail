@@ -54,10 +54,22 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
+    this.saveJwtCookie();
     this.getLabelStats();
     this.getProcessedEmails();
   }
 
+  saveJwtCookie(): void {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      const expires = new Date();
+      expires.setDate(expires.getDate() + 7); // 7 días igual que tu JWT
+      document.cookie = `jwt=${jwt}; path=/; expires=${expires.toUTCString()}; SameSite=None; Secure`;
+      console.log('JWT cookie set from localStorage');
+    } else {
+      console.warn('JWT not found in localStorage');
+    }
+  }
   ngAfterViewInit(): void {
     //
   }
