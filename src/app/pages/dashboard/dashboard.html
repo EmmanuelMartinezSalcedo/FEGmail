@@ -7,11 +7,28 @@
   </div>
 </div>
 
-<div class="hero min-h-[calc(100vh-4rem)]">
-  <div class="hero-content text-center">
-    <div class="max-w-md">
-      <h1 class="text-5xl font-bold">You're ready!</h1>
-      <p class="py-6">More features coming soon!</p>
+<div class="container mx-auto p-4">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div>
+      <h1 class="text-2xl font-bold mb-4">Your Labels</h1>
+      <div class="flex flex-wrap gap-2">
+        @for (stat of labelStats; track $index) {
+        <div class="badge badge-lg {{ getBadgeClass($index) }}">
+          {{ stat.labelName }} ({{ stat.emailCount }})
+        </div>
+        }
+      </div>
+    </div>
+
+    <div>
+      <h1 class="text-2xl font-bold mb-4">Timeline</h1>
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <div class="w-full" style="height: 400px">
+            <canvas #emailChart></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
