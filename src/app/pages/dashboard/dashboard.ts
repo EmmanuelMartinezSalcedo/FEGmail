@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { UserService, LabelStat } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
-import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 
@@ -80,28 +80,38 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
 
     const now = new Date();
     const last12Hours: string[] = [];
+    const hourBoundaries: Date[] = [];
 
     for (let i = 11; i >= 0; i--) {
-      const hour = new Date(now.getTime() - i * 60 * 60 * 1000);
-      last12Hours.push(
-        hour.toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          hour12: false,
-        })
-      );
+      const hourStart = new Date(now);
+      hourStart.setMinutes(0, 0, 0);
+      hourStart.setHours(hourStart.getHours() - i);
+
+      hourBoundaries.push(hourStart);
+      const startHour = hourStart.getHours().toString().padStart(2, '0');
+      last12Hours.push(`${startHour}:00 - ${startHour}:59`);
     }
 
     const labelData: { [key: string]: number[] } = {};
 
     this.processedEmails.forEach((email) => {
       const emailDate = new Date(email.processedAt);
-      const hourIndex = this.getHourIndex(emailDate, now);
 
-      if (hourIndex >= 0 && hourIndex < 12) {
-        if (!labelData[email.labelAssigned]) {
-          labelData[email.labelAssigned] = new Array(12).fill(0);
+      // Encontrar en qué bucket de hora cae este email
+      for (let i = 0; i < hourBoundaries.length; i++) {
+        const currentHourStart = hourBoundaries[i];
+        const nextHourStart =
+          i < hourBoundaries.length - 1
+            ? hourBoundaries[i + 1]
+            : new Date(currentHourStart.getTime() + 60 * 60 * 1000);
+
+        if (emailDate >= currentHourStart && emailDate < nextHourStart) {
+          if (!labelData[email.labelAssigned]) {
+            labelData[email.labelAssigned] = new Array(12).fill(0);
+          }
+          labelData[email.labelAssigned][i]++;
+          break;
         }
-        labelData[email.labelAssigned][11 - hourIndex]++;
       }
     });
 
@@ -131,41 +141,31 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
           plugins: {
             legend: {
               position: 'top',
-              labels: {
-                usePointStyle: true,
-                padding: 15,
-              },
+              labels: { usePointStyle: true, padding: 15 },
             },
             title: {
               display: true,
               text: 'Email Processing Activity',
-              font: {
-                size: 16,
-                weight: 'bold',
-              },
+              font: { size: 16, weight: 'bold' },
             },
           },
           scales: {
             y: {
               beginAtZero: true,
-              ticks: {
-                stepSize: 1,
-              },
-              title: {
-                display: true,
-                text: 'Number of Emails',
-              },
+              ticks: { stepSize: 1 },
+              title: { display: true, text: 'Number of Emails' },
             },
-            x: {
-              title: {
-                display: true,
-                text: 'Time (last 12 hours)',
-              },
-            },
+            x: { title: { display: true, text: 'Time (last 12 hours)' } },
           },
         },
       });
     }
+  }
+
+  getHourIndexLocal(emailDate: Date, now: Date): number {
+    const diffMs = now.getTime() - emailDate.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    return diffHours;
   }
 
   getHourIndex(emailDate: Date, now: Date): number {
