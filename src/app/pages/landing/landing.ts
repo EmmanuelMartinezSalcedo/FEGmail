@@ -30,7 +30,7 @@ export class Landing implements AfterViewInit {
     private waitService: WaitService
   ) {}
   ngAfterViewInit() {
-    confetti({ particleCount: 50 });
+    //confetti({ particleCount: 50 });
   }
   startWithGoogle(): void {
     this.authService.login().subscribe({
