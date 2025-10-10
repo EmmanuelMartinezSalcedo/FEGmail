@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { LabelStatsResponse } from '../dtos/label-stat-response.dto';
 import { ProcessedEmailsResponse } from '../dtos/processed-email-response.dto';
 
