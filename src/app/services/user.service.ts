@@ -1,36 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface LabelStat {
-  userId: number;
-  labelName: string;
-  emailCount: number;
-  id: number;
-  domainEvents: any[];
-}
-
-export interface LabelStatsResponse {
-  labelStats: LabelStat[];
-  errors: any;
-}
-
-export interface ProcessedEmail {
-  processedAt: string;
-  labelAssigned: string;
-}
-
-export interface ProcessedEmailsResponse {
-  emails: ProcessedEmail[];
-  errors: any;
-}
+import { environment } from '../enviroments/enviroment';
+import { LabelStatsResponse } from '../dtos/label-stat-response.dto';
+import { ProcessedEmailsResponse } from '../dtos/processed-email-response.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private readonly API_URL =
-    'https://gmailorganizerweb20251003064031-ghapafesajdqa7gy.canadacentral-01.azurewebsites.net';
+  private readonly API_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

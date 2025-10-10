@@ -7,9 +7,10 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService, LabelStat } from '../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
+import { LabelStat } from '../../dtos/label-stat-response.dto';
 
 Chart.register(...registerables);
 

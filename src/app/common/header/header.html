@@ -1,0 +1,71 @@
+<div class="navbar bg-base-100 shadow-sm fixed top-0 z-50">
+  <div class="flex-1">
+    <a href="/" class="btn btn-ghost text-xl">Flow Box</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal space-x-4 px-1">
+      <li><a href="#faq" class="btn btn-ghost">FAQ</a></li>
+
+      <li>
+        <button class="btn btn-ghost btn-disabled">Release notes</button>
+      </li>
+      <li><a href="#pricing" class="btn btn-ghost">Pricing</a></li>
+      <li>
+        <button class="btn btn-soft" (click)="openWaitlistModal()">
+          Join the waitlist
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-info" (click)="startWithGoogle()">
+          Get started with Google
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<dialog id="waitlist_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Join the Waitlist</h3>
+    <form
+      [formGroup]="waitlistForm"
+      (ngSubmit)="onWaitlistSubmit()"
+      class="mt-4"
+    >
+      <div class="form-control">
+        <input
+          type="email"
+          placeholder="your@email.com"
+          class="input input-bordered"
+          formControlName="email"
+        />
+      </div>
+      <div class="modal-action">
+        <button type="button" class="btn" (click)="closeWaitlistModal()">
+          Close
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!waitlistForm.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+@if (showSuccessToast || showErrorToast) {
+<div class="toast toast-end">
+  @if (showSuccessToast) {
+  <div class="alert alert-success">
+    <span>You joined the waitlist successfully!</span>
+  </div>
+  } @if (showErrorToast) {
+  <div class="alert alert-error">
+    <span>Try again later</span>
+  </div>
+  }
+</div>
+}

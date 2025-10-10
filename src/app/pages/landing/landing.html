@@ -1,28 +1,4 @@
-<div class="navbar bg-base-100 shadow-sm fixed top-0 z-50">
-  <div class="flex-1">
-    <a class="btn btn-ghost text-xl">Mail Organizer</a>
-  </div>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal space-x-4 px-1">
-      <li><a href="#faq" class="btn btn-ghost">FAQ</a></li>
-
-      <li>
-        <button class="btn btn-ghost btn-disabled">Release notes</button>
-      </li>
-      <li><a href="#pricing" class="btn btn-ghost">Pricing</a></li>
-      <li>
-        <button class="btn btn-soft" (click)="openWaitlistModal()">
-          Join the waitlist
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-info" (click)="startWithGoogle()">
-          Get started with Google
-        </button>
-      </li>
-    </ul>
-  </div>
-</div>
+<app-header />
 <div class="hero min-h-[70vh] bg-base-200 pt-16">
   <div class="hero-content text-center">
     <div class="max-w-3xl">
@@ -203,17 +179,17 @@
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
               >check</span
-            >Up to 100 emails/day
+            >Up to 1000 emails/month
           </li>
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
               >check</span
-            >Basic AI labeling
+            >Basic labeling
           </li>
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
               >check</span
-            >Email support
+            >Labeling every 30 minutes
           </li>
         </ul>
         <button class="btn btn-outline btn-disabled w-full">Start Trial</button>
@@ -237,7 +213,7 @@
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
               >check</span
-            >Advanced AI labeling
+            >Multiple labeling
           </li>
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
@@ -247,7 +223,7 @@
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
               >check</span
-            >Custom rules
+            >Labeling every 15 minutes
           </li>
         </ul>
         <button class="btn btn-secondary btn-disabled w-full">
@@ -261,7 +237,7 @@
       <div class="card-body items-center text-center">
         <h3 class="card-title text-2xl font-bold">Big</h3>
         <div class="text-3xl font-bold my-4">
-          $19<span class="text-lg">/mo</span>
+          $15<span class="text-lg">/mo</span>
         </div>
         <p class="font-semibold mb-4">For power users</p>
         <ul class="space-y-2 text-left mb-8 min-h-[160px]">
@@ -273,12 +249,17 @@
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
               >check</span
-            >Multiple accounts
+            >Custom rules labeling
           </li>
           <li>
             <span class="material-symbols-outlined align-middle mr-2"
               >check</span
             >24/7 priority support
+          </li>
+          <li>
+            <span class="material-symbols-outlined align-middle mr-2"
+              >check</span
+            >Instant labeling
           </li>
         </ul>
         <button class="btn btn-outline btn-disabled w-full">Choose Big</button>
@@ -299,49 +280,4 @@
     </div>
   </div>
 </div>
-
-<dialog id="waitlist_modal" class="modal">
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">Join the Waitlist</h3>
-    <form
-      [formGroup]="waitlistForm"
-      (ngSubmit)="onWaitlistSubmit()"
-      class="mt-4"
-    >
-      <div class="form-control">
-        <input
-          type="email"
-          placeholder="your@email.com"
-          class="input input-bordered"
-          formControlName="email"
-        />
-      </div>
-      <div class="modal-action">
-        <button type="button" class="btn" (click)="closeWaitlistModal()">
-          Close
-        </button>
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [disabled]="!waitlistForm.valid"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
-  </div>
-</dialog>
-
-@if (showSuccessToast || showErrorToast) {
-<div class="toast toast-end">
-  @if (showSuccessToast) {
-  <div class="alert alert-success">
-    <span>You joined the waitlist successfully!</span>
-  </div>
-  } @if (showErrorToast) {
-  <div class="alert alert-error">
-    <span>Try again later</span>
-  </div>
-  }
-</div>
-}
+<app-footer />

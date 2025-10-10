@@ -14,6 +14,20 @@ export const routes: Routes = [
       import('./pages/landing/landing').then((m) => m.Landing),
   },
   {
+    path: 'privacy-policy',
+    loadComponent: () =>
+      import('./pages/privacy-policy/privacy-policy').then(
+        (m) => m.PrivacyPolicy
+      ),
+  },
+  {
+    path: 'terms-conditions',
+    loadComponent: () =>
+      import('./pages/terms-conditions/terms-conditions').then(
+        (m) => m.TermsConditions
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

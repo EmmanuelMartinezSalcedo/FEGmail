@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface JoinWaitlistResponse {
-  success: boolean;
-  message: string;
-}
-
-interface JoinWaitlistRequest {
-  email: string;
-}
+import { environment } from '../enviroments/enviroment';
+import {
+  JoinWaitlistRequest,
+  JoinWaitlistResponse,
+} from '../dtos/join-waitlist.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WaitService {
-  private readonly API_URL =
-    'https://gmailorganizerweb20251003064031-ghapafesajdqa7gy.canadacentral-01.azurewebsites.net';
+  private readonly API_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

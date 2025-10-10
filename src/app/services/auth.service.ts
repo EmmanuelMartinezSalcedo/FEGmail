@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface LoginResponse {
-  url: string;
-  state: string;
-}
+import { environment } from '../enviroments/enviroment';
+import { LoginResponse } from '../dtos/login-response.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL =
-    'https://gmailorganizerweb20251003064031-ghapafesajdqa7gy.canadacentral-01.azurewebsites.net';
+  private readonly API_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   login(): Observable<LoginResponse> {
     return this.http.get<LoginResponse>(`${this.API_URL}/auth/login`, {
-      withCredentials: true, // 👈 clave
+      withCredentials: true,
     });
   }
 
