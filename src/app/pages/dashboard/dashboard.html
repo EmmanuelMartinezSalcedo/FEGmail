@@ -12,26 +12,86 @@
   </div>
 </div>
 
-<div class="container mx-auto p-4">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div>
-      <h1 class="text-2xl font-bold mb-4">Your Labels</h1>
-      <div class="flex flex-wrap gap-2">
-        @for (stat of labelStats; track $index) {
-        <div class="badge badge-lg {{ getBadgeClass($index) }}">
-          {{ stat.labelName }} ({{ stat.emailCount }})
-        </div>
-        }
-      </div>
-    </div>
-
-    <div>
-      <h1 class="text-2xl font-bold mb-4">Timeline</h1>
-      <div class="card bg-base-100 shadow-xl">
-        <div class="card-body">
+<div class="container mx-auto p-6 max-w-7xl">
+  <!-- Main Grid -->
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+    <!-- Timeline Section - Takes 2 columns on XL screens -->
+    <div class="xl:col-span-2">
+      <div class="card bg-white shadow-lg rounded-xl border border-gray-100">
+        <div class="card-body p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-gray-800">Email Timeline</h2>
+            <div class="badge badge-outline">Last 12 hours</div>
+          </div>
           <div class="w-full" style="height: 400px">
             <canvas #emailChart></canvas>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Labels Section - Takes 1 column -->
+    <div class="xl:col-span-1">
+      <div
+        class="card bg-white shadow-lg rounded-xl border border-gray-100 h-full"
+      >
+        <div class="card-body p-6">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Labels</h2>
+          <div class="space-y-3 max-h-[400px] overflow-y-auto pr-2">
+            @for (stat of labelStats; track $index) {
+            <div
+              class="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-100"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-3 h-3 rounded-full {{ getBadgeClass($index) }}"
+                ></div>
+                <span class="font-medium text-gray-700"
+                  >{{ stat.labelName }}</span
+                >
+              </div>
+              <span class="badge badge-sm {{ getBadgeClass($index) }}">
+                {{ stat.emailCount }}
+              </span>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: Stats Summary Row -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+    <div
+      class="card bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200"
+    >
+      <div class="card-body p-4">
+        <div class="stat-title text-blue-800 text-sm">Total Emails</div>
+        <div class="stat-value text-2xl text-blue-900">
+          {{ getTotalEmails() }}
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="card bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200"
+    >
+      <div class="card-body p-4">
+        <div class="stat-title text-purple-800 text-sm">Active Labels</div>
+        <div class="stat-value text-2xl text-purple-900">
+          {{ labelStats.length }}
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="card bg-gradient-to-br from-green-50 to-green-100 border border-green-200"
+    >
+      <div class="card-body p-4">
+        <div class="stat-title text-green-800 text-sm">Most Used</div>
+        <div class="stat-value text-xl text-green-900">
+          {{ getMostUsedLabel() }}
         </div>
       </div>
     </div>
@@ -74,11 +134,11 @@
         <div class="card-body items-center text-center">
           <h3 class="card-title text-xl">Free Trial</h3>
           <div class="text-3xl font-bold my-4">$0</div>
-          <p class="font-semibold mb-4">Try for 30 days</p>
+          <p class="font-semibold mb-4"></p>
           <ul class="space-y-2 text-left mb-6 w-full text-sm">
             <li class="flex items-start gap-2">
               <span class="material-symbols-outlined text-success">check</span>
-              <span>Up to 1000 emails/month</span>
+              <span>Up to 100 emails/month</span>
             </li>
             <li class="flex items-start gap-2">
               <span class="material-symbols-outlined text-success">check</span>
@@ -96,7 +156,6 @@
       <!-- Small -->
       <div class="card bg-primary text-primary-content shadow-xl">
         <div class="card-body items-center text-center">
-          <div class="badge badge-secondary mb-2">Popular</div>
           <h3 class="card-title text-xl">Small</h3>
           <div class="text-3xl font-bold my-4">
             $9<span class="text-lg">/mo</span>

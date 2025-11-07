@@ -168,7 +168,7 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
               ticks: { stepSize: 1 },
               title: { display: true, text: 'Number of Emails' },
             },
-            x: { title: { display: true, text: 'Time (last 12 hours)' } },
+            x: { title: { display: true, text: 'Timeline' } },
           },
         },
       });
@@ -200,5 +200,17 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
     if (this.chart) {
       this.chart.destroy();
     }
+  }
+
+  getTotalEmails(): number {
+    return this.labelStats.reduce((sum, stat) => sum + stat.emailCount, 0);
+  }
+
+  getMostUsedLabel(): string {
+    if (this.labelStats.length === 0) return 'N/A';
+    const mostUsed = this.labelStats.reduce((max, stat) =>
+      stat.emailCount > max.emailCount ? stat : max
+    );
+    return mostUsed.labelName;
   }
 }
