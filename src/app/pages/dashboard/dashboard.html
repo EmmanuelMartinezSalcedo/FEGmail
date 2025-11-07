@@ -3,6 +3,11 @@
     <span class="text-xl font-bold px-4">Mail Organizer</span>
   </div>
   <div class="flex-none">
+    <button class="btn btn-ghost" onclick="settings.showModal()">
+      Settings
+    </button>
+  </div>
+  <div class="flex-none">
     <button class="btn btn-ghost" (click)="logout()">Logout</button>
   </div>
 </div>
@@ -32,3 +37,138 @@
     </div>
   </div>
 </div>
+
+<dialog id="settings" class="modal">
+  <div class="modal-box max-w-6xl">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+        ✕
+      </button>
+    </form>
+
+    <h3 class="text-2xl font-bold mb-2">Settings</h3>
+    <p class="text-sm opacity-70 mb-6">Change your subscription plan</p>
+
+    <!-- Current Plan Info -->
+    <div class="alert alert-info mb-6">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="stroke-current shrink-0 w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        ></path>
+      </svg>
+      <span>Current Plan: <strong>Free Trial</strong></span>
+    </div>
+
+    <!-- Plans Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Free Trial -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body items-center text-center">
+          <h3 class="card-title text-xl">Free Trial</h3>
+          <div class="text-3xl font-bold my-4">$0</div>
+          <p class="font-semibold mb-4">Try for 30 days</p>
+          <ul class="space-y-2 text-left mb-6 w-full text-sm">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-success">check</span>
+              <span>Up to 1000 emails/month</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-success">check</span>
+              <span>Basic labeling</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-success">check</span>
+              <span>Labeling every 30 minutes</span>
+            </li>
+          </ul>
+          <button class="btn btn-outline btn-sm w-full">Current Plan</button>
+        </div>
+      </div>
+
+      <!-- Small -->
+      <div class="card bg-primary text-primary-content shadow-xl">
+        <div class="card-body items-center text-center">
+          <div class="badge badge-secondary mb-2">Popular</div>
+          <h3 class="card-title text-xl">Small</h3>
+          <div class="text-3xl font-bold my-4">
+            $9<span class="text-lg">/mo</span>
+          </div>
+          <p class="font-semibold mb-4">Perfect for personal use</p>
+          <ul class="space-y-2 text-left mb-6 w-full text-sm">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined">check</span>
+              <span>Unlimited emails</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined">check</span>
+              <span>Multiple labeling</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined">check</span>
+              <span>Priority support</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined">check</span>
+              <span>Labeling every 15 minutes</span>
+            </li>
+          </ul>
+          <a
+            href="https://mpago.la/1rLwuBj"
+            target="_blank"
+            class="btn btn-secondary btn-sm w-full"
+            >Upgrade to Small</a
+          >
+        </div>
+      </div>
+
+      <!-- Big -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body items-center text-center">
+          <h3 class="card-title text-xl">Big</h3>
+          <div class="text-3xl font-bold my-4">
+            $15<span class="text-lg">/mo</span>
+          </div>
+          <p class="font-semibold mb-4">For power users</p>
+          <ul class="space-y-2 text-left mb-6 w-full text-sm">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-success">check</span>
+              <span>Everything in Small</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-success">check</span>
+              <span>Custom rules labeling</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-success">check</span>
+              <span>24/7 priority support</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-success">check</span>
+              <span>Instant labeling</span>
+            </li>
+          </ul>
+          <a
+            href="https://mpago.la/1rLwuBj"
+            target="_blank"
+            class="btn btn-outline btn-sm w-full"
+            >Upgrade to Big</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>

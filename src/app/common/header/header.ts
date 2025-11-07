@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import confetti from 'canvas-confetti';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class Header implements AfterViewInit {
   showErrorToast = false;
   constructor(
     private authService: AuthService,
-    private waitService: WaitService
+    private waitService: WaitService,
+    private router: Router
   ) {}
 
   ngAfterViewInit(): void {}
@@ -93,5 +95,8 @@ export class Header implements AfterViewInit {
         });
       }
     }
+  }
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 }

@@ -192,7 +192,9 @@
             >Labeling every 30 minutes
           </li>
         </ul>
-        <button class="btn btn-outline btn-disabled w-full">Start Trial</button>
+        <button class="btn btn-outline w-full" (click)="startWithGoogle()">
+          Start Trial
+        </button>
       </div>
     </div>
 
@@ -226,7 +228,7 @@
             >Labeling every 15 minutes
           </li>
         </ul>
-        <button class="btn btn-secondary btn-disabled w-full">
+        <button class="btn btn-secondary w-full" (click)="startWithGoogle()">
           Choose Small
         </button>
       </div>
@@ -262,7 +264,9 @@
             >Instant labeling
           </li>
         </ul>
-        <button class="btn btn-outline btn-disabled w-full">Choose Big</button>
+        <button class="btn btn-outline w-full" (click)="startWithGoogle()">
+          Choose Big
+        </button>
       </div>
     </div>
   </div>

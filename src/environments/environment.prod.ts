@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl:
-    'https://gmailorganizerweb20251003064031-ghapafesajdqa7gy.canadacentral-01.azurewebsites.net',
+  apiUrl: 'https://falsifiable-dalia-kymographic.ngrok-free.dev',
 };
