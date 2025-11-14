@@ -10,6 +10,22 @@
         <button class="btn btn-ghost btn-disabled">Release notes</button>
       </li>
       <li><a href="#pricing" class="btn btn-ghost">Pricing</a></li>
+      
+      <!-- Theme Toggle Button -->
+      <li>
+        <button 
+          class="btn btn-ghost btn-circle" 
+          (click)="toggleTheme()"
+          aria-label="Toggle theme"
+        >
+          @if (isDarkMode) {
+            <span class="material-symbols-outlined">light_mode</span>
+          } @else {
+            <span class="material-symbols-outlined">dark_mode</span>
+          }
+        </button>
+      </li>
+      
       <li>
         <button class="btn btn-soft" (click)="openWaitlistModal()">
           Join the waitlist

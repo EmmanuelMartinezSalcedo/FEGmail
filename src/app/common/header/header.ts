@@ -23,12 +23,32 @@ export class Header implements AfterViewInit {
   });
   showSuccessToast = false;
   showErrorToast = false;
+  isDarkMode = false;
   constructor(
     private authService: AuthService,
     private waitService: WaitService,
     private router: Router
   ) {}
 
+  ngOnInit() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      this.isDarkMode = savedTheme === 'thebigbutwhy';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      this.isDarkMode = false;
+      document.documentElement.setAttribute('data-theme', 'fluffyfan');
+    }
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    const theme = this.isDarkMode ? 'thebigbutwhy' : 'fluffyfan';
+
+    document.documentElement.setAttribute('data-theme', theme);
+
+    localStorage.setItem('theme', theme);
+  }
   ngAfterViewInit(): void {}
 
   openWaitlistModal(): void {
